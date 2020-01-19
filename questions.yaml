@@ -1,0 +1,76 @@
+labels:
+  io.cattle.role: project # options are cluster/project
+categories:
+  - Database
+  - PXC
+questions:
+  - variable: defaultImage
+    default: true
+    description: "Use default Docker images"
+    label: Use Default Images
+    type: boolean
+    show_subquestion_if: false
+    group: "Container Images"
+    subquestions:
+      - variable: image.repository
+        default: "percona/percona-xtradb-cluster"
+        description: "PXC image name"
+        type: string
+        label: Image Name
+      - variable: image.tag
+        default: "5.7.19"
+        description: "PXC image tag"
+        type: string
+        label: Image Tag
+  - variable: mysqlRootPassword
+    default: "root"
+    description: "Password for root user"
+    type: password
+    required: true
+    label: MySQL Database
+    group: "MySQL Settings"
+  - variable: mysqlDatabase
+    default: "admin"
+    description: "Name of database to create"
+    type: string
+    required: true
+    label: MySQL Database
+    group: "MySQL Settings"
+  - variable: mysqlUser
+    default: "admin"
+    description: "Username of user to create"
+    type: string
+    required: true
+    label: MySQL Username
+    group: "MySQL Settings"
+  - variable: mysqlPassword
+    default: "admin123"
+    description: "MySQL Password for the new user, defaults to a random 10-character alphanumeric string if not set"
+    type: password
+    label: MySQL Password
+    group: "MySQL Settings"
+  - variable: persistence.enabled
+    default: "false"
+    description: "Enable persistence using PVC"
+    type: boolean
+    required: true
+    label: Persistent Volume Enabled
+    show_subquestion_if: true
+    group: "Persistent Volume"
+    subquestions:
+      - variable: persistence.size
+        default: "8Gi"
+        description: "Volume Size"
+        type: string
+        label: Volume Size
+        required: true
+      - variable: persistence.storageClass
+        default: ""
+        description: "If undefined or null, uses the default StorageClass. Defaults to null."
+        type: storageclass
+        label: Default storageClass
+      - variable: persistence.existingClaim
+        default: ""
+        description: "If not empty, uses the specified existing PVC instead of creating new one"
+        type: pvc
+        label: Existing Persistent Volume Claim for mysql

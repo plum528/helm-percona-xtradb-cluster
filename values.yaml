@@ -13,7 +13,7 @@ replicas: 3
 ## Specify password for root user
 ## If commented out will set a random password which may break upgrades
 ##
-# mysqlRootPassword: not-a-secure-password
+mysqlRootPassword: root
 
 ## Specify password for xtradb backup user
 ## If commented out will set a random password which may break upgrades
@@ -22,8 +22,8 @@ replicas: 3
 
 ## Uncomment to create a database user
 ##
-# mysqlUser: test
-# mysqlPassword: test
+mysqlUser: admin
+mysqlPassword: admin123
 
 ## Allow unauthenticated access, uncomment to enable
 ##
@@ -31,7 +31,7 @@ replicas: 3
 
 ## Uncomment to Create a database
 ##
-# mysqlDatabase: test
+mysqlDatabase: admin
 
 ## Persist data to a persitent volume
 persistence:
