@@ -12,7 +12,7 @@ The chart exploits the deterministic nature of StatefulSet and KubeDNS to ensure
 
 ## Prerequisites
 
-- Kubernetes 1.8+ with Beta APIs enabled
+- Kubernetes 1.16+ with Beta APIs enabled
 - PV provisioner support in the underlying infrastructure
 
 ## Installing the Chart
@@ -52,15 +52,15 @@ The following tables lists the configurable parameters of the Percona chart and 
 
 | Parameter                  | Description                        | Default                                                    |
 | -----------------------    | ---------------------------------- | ---------------------------------------------------------- |
-| `image.repo`                 | `percona-xtradb-cluster` image Repo.                 | 5.7.19 release                                        |
+| `image.repo`                 | `percona-xtradb-cluster` image Repo.                 | 5.7.20 release                                        |
 | `image.tag`                 | `percona-xtradb-cluster` image tag.                 | `percona/percona-xtradb-cluster` |
 | `image.pullPolicy`          | Image pull policy                  | `IfNotPresent`                                             |
 | `replicas` | Number of pods to join the Percona XtraDB Cluster | 3 |
-| `mysqlRootPassword`        | Password for the `root` user.      | `not-a-secure-password`                                                      |
+| `mysqlRootPassword`        | Password for the `root` user.      | `root`                                                      |
 | `xtraBackupPassword`       | Password for the `xtrabackup` user. | `replicate-my-data` |
-| `mysqlUser`                | Username of new user to create.    | `nil`                                                      |
-| `mysqlPassword`            | Password for the new user.         | `nil`                                                      |
-| `mysqlDatabase`            | Name for new database to create.   | `nil`                                                      |
+| `mysqlUser`                | Username of new user to create.    | `admin`                                                      |
+| `mysqlPassword`            | Password for the new user.         | `admin123`                                                      |
+| `mysqlDatabase`            | Name for new database to create.   | `admin`                                                      |
 | `persistence.enabled`      | Create a volume to store data      | false                                                       |
 | `persistence.size`         | Size of persistent volume claim    | 8Gi RW                                                     |
 | `persistence.storageClass` | Type of persistent volume claim    | nil  (uses alpha storage class annotation)                 |
